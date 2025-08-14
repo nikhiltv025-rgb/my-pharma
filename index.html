@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Acme Pharma — Trusted Medicines & Healthcare</title>
+  <meta name="description" content="Modern, GMP-compliant pharmaceutical company offering quality generics, OTC products, and healthcare solutions.">
+  <meta property="og:title" content="Acme Pharma — Trusted Medicines & Healthcare">
+  <meta property="og:description" content="Modern, GMP-compliant pharmaceutical company offering quality generics, OTC products, and healthcare solutions.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://example.com">
+  <link rel="icon" href="/favicon.ico">
+  <style>
+    :root{
+      --bg: #0b1020; /* deep blue */
+      --panel:#0f1530;
+      --muted:#8aa1c1;
+      --primary:#4cc9f0;
+      --accent:#a3e635; /* lime */
+      --text:#eaf2ff;
+      --card:#111832;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#f7f9fc; --panel:#ffffff; --card:#ffffff; --text:#0b1020; --muted:#475569; --shadow:0 8px 24px rgba(2,6,23,.08); }
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:var(--text); background:radial-gradient(1200px 600px at 10% -10%, rgba(76,201,240,.2), transparent 60%), radial-gradient(800px 400px at 110% 10%, rgba(163,230,53,.18), transparent 60%), var(--bg);} 
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{width:min(1150px, 92vw); margin-inline:auto}
+    .btn{display:inline-flex; align-items:center; gap:.6rem; border:none; cursor:pointer; border-radius:999px; padding:.85rem 1.2rem; font-weight:600; transition:.2s transform ease, .3s box-shadow ease; background:linear-gradient(135deg, var(--primary), #00b9d8); color:#06121a; box-shadow:0 6px 20px rgba(76,201,240,.35)}
+    .btn:hover{transform:translateY(-1px)}
+    .btn.outline{background:transparent;border:1px solid rgba(148,163,184,.35); color:var(--text); box-shadow:none}
+    .badge{display:inline-flex; align-items:center; gap:.4rem; font-size:.8rem; padding:.35rem .6rem; border-radius:999px; background:rgba(163,230,53,.12); color:#c7f36a; border:1px solid rgba(163,230,53,.25)}
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(1.1) blur(8px); background:linear-gradient(180deg, rgba(10,16,32,.8), rgba(10,16,32,.35)); border-bottom:1px solid rgba(148,163,184,.15)}
+    nav{display:flex; align-items:center; justify-content:space-between; padding:.8rem 0}
+    .brand{display:flex; align-items:center; gap:.7rem; font-weight:800; letter-spacing:.3px}
+    .brand .logo{width:36px; height:36px; border-radius:10px; background:conic-gradient(from 210deg, var(--primary), #6ee7ff 40%, #22d3ee 55%, var(--accent) 80%, #22d3ee); box-shadow:0 6px 18px rgba(76,201,240,.4)}
+    .navlinks{display:flex; gap:1.1rem; align-items:center}
+    .navlinks a{opacity:.9; padding:.5rem .6rem; border-radius:10px}
+    .navlinks a:hover{background:rgba(148,163,184,.12)}
+    .menu-btn{display:none}
+    @media (max-width:900px){
+      .menu-btn{display:inline-flex}
+      .navlinks{display:none}
+      .navlinks.open{position:absolute; left:0; right:0; top:60px; display:flex; flex-direction:column; background:var(--panel); padding:1rem; border-bottom:1px solid rgba(148,163,184,.15)}
+    }
+    .hero{padding:clamp(2rem, 4vw + 1rem, 5rem) 0 3rem}
+    .hero .inner{display:grid; grid-template-columns: 1.1fr .9fr; gap:2rem; align-items:center}
+    .hero h1{font-size:clamp(2rem, 1.8rem + 2.4vw, 3.2rem); line-height:1.1; margin:.2rem 0 .8rem}
+    .hero p{color:var(--muted)}
+    .hero .art{position:relative}
+    .hero .orb{position:absolute; inset:auto; right:-12%; top:-8%; width:160px; height:160px; border-radius:50%; background:radial-gradient(circle at 30% 30%, #fff, rgba(255,255,255,.25) 38%, rgba(76,201,240,.15) 60%, transparent 70%); filter:blur(.2px); opacity:.8}
+    .grid{display:grid; gap:1.2rem}
+    .grid.cols-3{grid-template-columns: repeat(3, 1fr)}
+    .grid.cols-2{grid-template-columns: repeat(2, 1fr)}
+    @media (max-width:900px){ .hero .inner{grid-template-columns:1fr;} .grid.cols-3{grid-template-columns:1fr} .grid.cols-2{grid-template-columns:1fr} }
+    section{padding:3rem 0; border-top:1px solid rgba(148,163,184,.12)}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0)); border:1px solid rgba(148,163,184,.18); border-radius:var(--radius); padding:1.1rem; box-shadow:var(--shadow)}
+    .card h3{margin:.2rem 0 .4rem}
+    .muted{color:var(--muted)}
+    .kpi{display:flex; gap:1rem; align-items:center}
+    .kpi strong{font-size:1.8rem}
+    .pill{display:inline-flex; align-items:center; gap:.4rem; padding:.35rem .6rem; border:1px solid rgba(148,163,184,.25); border-radius:999px; font-size:.85rem}
+    .list{display:grid; gap:.6rem}
+    .list li{display:flex; gap:.6rem}
+    .list svg{flex:0 0 20px}
+    .products .card img{border-radius:14px; aspect-ratio: 16/10; object-fit:cover; background:#0b132e}
+    .products .meta{display:flex; justify-content:space-between; align-items:center; margin-top:.5rem}
+    .products .price{font-weight:700}
+    .cta{display:flex; gap:.8rem; flex-wrap:wrap; margin-top:1rem}
+    .badges{display:flex; gap:.5rem; flex-wrap:wrap}
+    .qual{display:grid; grid-template-columns: 1.3fr .7fr; gap:1rem; align-items:start}
+    @media (max-width:900px){ .qual{grid-template-columns:1fr} }
+    .contact form{display:grid; gap:.8rem}
+    .field{display:grid; gap:.35rem}
+    .field input, .field select, .field textarea{padding:.85rem 1rem; border-radius:14px; border:1px solid rgba(148,163,184,.25); background:rgba(2,6,23,.3); color:var(--text)}
+    .field input:focus, .field textarea:focus, .field select:focus{outline:2px solid var(--primary); outline-offset:2px}
+    .footer{display:grid; grid-template-columns: 1.3fr .7fr .7fr; gap:1.2rem; padding:2.4rem 0}
+    @media (max-width:900px){ .footer{grid-template-columns:1fr} }
+    .small{font-size:.9rem}
+    .copyright{border-top:1px solid rgba(148,163,184,.12); padding:1rem 0; color:var(--muted); font-size:.9rem}
+    .skip-link{position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden}
+    .skip-link:focus{left:1rem; top:1rem; width:auto; height:auto; background:#fff; color:#111; padding:.5rem 1rem; border-radius:999px}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Acme Pharma",
+    "url": "https://example.com",
+    "logo": "https://example.com/logo.png",
+    "sameAs": ["https://www.linkedin.com/company/example"],
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "telephone": "+91-22-5555-0000",
+      "contactType": "customer service",
+      "areaServed": "IN",
+      "availableLanguage": ["en","hi"]
+    }]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header>
+    <div class="container">
+      <nav aria-label="Primary">
+        <a class="brand" href="#" aria-label="Acme Pharma home">
+          <span class="logo" aria-hidden="true"></span>
+          <span>Acme Pharma</span>
+        </a>
+        <button class="btn outline menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
+        <div id="menu" class="navlinks" role="menubar">
+          <a href="#about" role="menuitem">About</a>
+          <a href="#therapies" role="menuitem">Therapies</a>
+          <a href="#products" role="menuitem">Products</a>
+          <a href="#quality" role="menuitem">Quality</a>
+          <a href="#contact" role="menuitem">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container inner">
+        <div>
+          <span class="badge" aria-label="GMP certified">GMP Certified • WHO-GMP Ready</span>
+          <h1 id="hero-title">Trusted medicines. Proven quality.</h1>
+          <p>We formulate and manufacture high‑quality generics and OTC products across key therapeutic areas—cardiology, diabetes, pain management, and more. Backed by stringent QA, validated processes, and a culture of safety.</p>
+          <div class="cta">
+            <a href="#products" class="btn">Browse Products</a>
+            <a href="#contact" class="btn outline">Request a Quote</a>
+          </div>
+          <div class="kpi" aria-label="Key company stats" style="margin-top:1.2rem">
+            <div class="pill"><strong>250+</strong>&nbsp;SKUs</div>
+            <div class="pill"><strong>40+</strong>&nbsp;Markets</div>
+            <div class="pill"><strong>15</strong>&nbsp;Therapies</div>
+          </div>
+        </div>
+        <div class="art">
+          <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200&auto=format&fit=crop" width="600" height="420" alt="Lab technician preparing pharmaceutical samples in a sterile environment.">
+          <div class="orb" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="container" aria-labelledby="about-title">
+      <div class="grid cols-2">
+        <div class="card">
+          <h2 id="about-title">About Acme Pharma</h2>
+          <p class="muted">Acme Pharma is a vertically integrated pharmaceutical company focused on development, manufacturing, and distribution of quality generics and OTC healthcare products.</p>
+          <ul class="list" aria-label="Highlights">
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              WHO‑GMP aligned facilities with validated processes
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Strong regulatory dossier support (CTD/eCTD)
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Cold chain & temperature‑controlled logistics
+            </li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>Therapeutic Focus</h2>
+          <div class="badges" aria-label="Therapy areas">
+            <span class="pill">Cardiology</span>
+            <span class="pill">Endocrinology</span>
+            <span class="pill">Gastro</span>
+            <span class="pill">Pain/Analgesics</span>
+            <span class="pill">Dermatology</span>
+            <span class="pill">Pediatrics</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="therapies" class="container" aria-labelledby="therapies-title">
+      <h2 id="therapies-title">Therapy Categories</h2>
+      <div class="grid cols-3" style="margin-top:1rem">
+        <article class="card">
+          <h3>Cardiovascular</h3>
+          <p class="muted">Statins, beta‑blockers, ACE inhibitors, antiplatelets.</p>
+        </article>
+        <article class="card">
+          <h3>Diabetes Care</h3>
+          <p class="muted">Metformin, DPP‑4 inhibitors, insulin support.</p>
+        </article>
+        <article class="card">
+          <h3>Gastrointestinal</h3>
+          <p class="muted">PPIs, antacids, antiemetics, probiotics.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="products" class="container products" aria-labelledby="products-title">
+      <h2 id="products-title">Featured Products</h2>
+      <div class="grid cols-3" style="margin-top:1rem">
+        <article class="card" tabindex="0" aria-labelledby="p1-name">
+          <img src="https://images.unsplash.com/photo-1582719478312-1b9a3ba3fd46?q=80&w=1200&auto=format&fit=crop" alt="Blister pack of tablets">
+          <div class="meta">
+            <div>
+              <h3 id="p1-name">Atorvastatin 20 mg</h3>
+              <p class="muted small">Lipid‑lowering agent • 10x10 alu‑alu</p>
+            </div>
+            <span class="price">Rx</span>
+          </div>
+          <button class="btn outline small" data-product="Atorvastatin 20 mg">Details</button>
+        </article>
+
+        <article class="card" tabindex="0" aria-labelledby="p2-name">
+          <img src="https://images.unsplash.com/photo-1582719478342-43251d7817de?q=80&w=1200&auto=format&fit=crop" alt="Syrup bottle with measuring cup">
+          <div class="meta">
+            <div>
+              <h3 id="p2-name">Omeprazole 20 mg</h3>
+              <p class="muted small">Anti‑ulcer • 10x10 blister</p>
+            </div>
+            <span class="price">Rx</span>
+          </div>
+          <button class="btn outline small" data-product="Omeprazole 20 mg">Details</button>
+        </article>
+
+        <article class="card" tabindex="0" aria-labelledby="p3-name">
+          <img src="https://images.unsplash.com/photo-1582719478258-bd5d9bfe39dd?q=80&w=1200&auto=format&fit=crop" alt="OTC vitamin bottle">
+          <div class="meta">
+            <div>
+              <h3 id="p3-name">Vitamin C 500 mg</h3>
+              <p class="muted small">OTC immunity • 60 tablets</p>
+            </div>
+            <span class="price">OTC</span>
+          </div>
+          <button class="btn outline small" data-product="Vitamin C 500 mg">Details</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="quality" class="container qual" aria-labelledby="quality-title">
+      <div class="card">
+        <h2 id="quality-title">Quality & Compliance</h2>
+        <p class="muted">We operate to cGMP and ICH guidelines with rigorous in‑process controls and full traceability from raw materials to dispatch.</p>
+        <ul class="list" aria-label="Quality bullets">
+          <li>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            ISO 9001:2015 & ISO 13485 compliant systems
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Validated equipment (DQ/IQ/OQ/PQ) and calibrated instruments
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Stability studies as per ICH Q1A(R2)
+          </li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Downloads</h3>
+        <ul class="list small">
+          <li><a href="#">COA sample (PDF)</a></li>
+          <li><a href="#">Product catalog (PDF)</a></li>
+          <li><a href="#">Facility master file</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact" class="container contact" aria-labelledby="contact-title">
+      <div class="grid cols-2">
+        <div class="card">
+          <h2 id="contact-title">Contact Us</h2>
+          <p class="muted">For B2B inquiries, distribution, or contract manufacturing opportunities, send us a message.</p>
+          <form id="contact-form" novalidate>
+            <div class="field">
+              <label for="name">Full Name</label>
+              <input id="name" name="name" type="text" placeholder="Jane Doe" required autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@company.com" required autocomplete="email">
+            </div>
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" placeholder="+91‑XXXXXXXXXX" pattern="[+0-9\-()\s]{7,}" autocomplete="tel">
+            </div>
+            <div class="field">
+              <label for="topic">Inquiry Type</label>
+              <select id="topic" name="topic">
+                <option>Distribution</option>
+                <option>Contract Manufacturing</option>
+                <option>Regulatory/Dossier</option>
+                <option>General</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="4" placeholder="Tell us about your requirement..." required></textarea>
+            </div>
+            <button class="btn" type="submit">Send Message</button>
+            <p id="form-status" class="muted" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+        <div class="card">
+          <h3>Head Office</h3>
+          <address class="small muted">Acme Pharma Pvt. Ltd.<br>Plot 12, Industrial Estate, Navi Mumbai, MH 400710, India<br>+91‑22‑5555‑0000</address>
+          <iframe title="Map" style="width:100%; aspect-ratio:16/9; border:0; border-radius:14px" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=navi%20mumbai&output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div class="footer">
+      <div>
+        <div class="brand" aria-label="Acme Pharma">
+          <span class="logo" aria-hidden="true"></span>
+          <strong>Acme Pharma</strong>
+        </div>
+        <p class="muted small" style="margin-top:.6rem">Quality generics and OTC healthcare. Made with care, shipped with confidence.</p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul class="list small">
+          <li><a href="#about">About</a></li>
+          <li><a href="#quality">Quality</a></li>
+          <li><a href="#products">Products</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Compliance</h4>
+        <ul class="list small">
+          <li><a href="#">Pharmacovigilance</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">© <span id="year"></span> Acme Pharma Pvt. Ltd. All rights reserved.</div>
+  </footer>
+
+  <dialog id="product-dialog" style="border:none; border-radius:18px; padding:0; max-width:640px; width:92%; box-shadow:var(--shadow); background:var(--panel); color:var(--text)">
+    <form method="dialog" style="padding:1.2rem">
+      <h3 id="dialog-title">Product Details</h3>
+      <p class="muted small">Composition, pack size, storage, shelf life, and regulatory status.</p>
+      <div style="display:flex; gap:1rem; margin-top:.8rem">
+        <img id="dialog-img" src="" alt="Product image" style="width:200px; border-radius:14px; object-fit:cover">
+        <div class="small">
+          <p><strong>Dosage Form:</strong> Tablet</p>
+          <p><strong>Strength:</strong> —</p>
+          <p><strong>Pack:</strong> 10x10 alu‑alu</p>
+          <p><strong>Storage:</strong> Store below 25°C, protect from light</p>
+        </div>
+      </div>
+      <div style="display:flex; justify-content:flex-end; gap:.6rem; margin-top:1rem">
+        <button class="btn outline">Close</button>
+        <a class="btn" href="#contact">Enquire</a>
+      </div>
+    </form>
+  </dialog>
+
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.querySelector('.menu-btn');
+    const navlinks = document.getElementById('menu');
+    menuBtn?.addEventListener('click', () => {
+      const open = navlinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+    });
+
+    // Dialog behavior for product details
+    const dialog = document.getElementById('product-dialog');
+    const productButtons = document.querySelectorAll('[data-product]');
+    productButtons.forEach(btn => btn.addEventListener('click', (e) => {
+      const name = e.currentTarget.getAttribute('data-product');
+      document.getElementById('dialog-title').textContent = name;
+      const card = e.currentTarget.closest('.card');
+      const img = card.querySelector('img');
+      document.getElementById('dialog-img').src = img.src;
+      dialog.showModal();
+    }));
+
+    // Contact form feedback (demo only)
+    const form = document.getElementById('contact-form');
+    const statusEl = document.getElementById('form-status');
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!form.checkValidity()){
+        statusEl.textContent = 'Please complete all required fields.';
+        return;
+      }
+      statusEl.textContent = 'Thank you! We\'ll get back to you within 1–2 business days.';
+      form.reset();
+    });
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
