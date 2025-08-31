@@ -9,15 +9,73 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: #f8f9fa;
+      background: #0e6bc8;
     }
     header {
-      background: purple;
+      background: rgb(61, 16, 61);
       color: white;
       padding: 15px;
-      text-align: center;
+      text-align:right;
     }
     h1 { margin: 0; }
+
+    /* 🔹 Banner Slider */
+    .slider {
+      position: relative;
+      overflow: hidden;
+      height: 250px;
+    }
+    .slides {
+      display: flex;
+      width: 100%;
+      animation: slide 12s infinite;
+    }
+    .slide {
+      flex: 1 0 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+    }
+    .slide img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      opacity: 0.6;
+    }
+    .slide a {
+      background: white;
+      color: #d6336c;
+      border: none;
+      padding: 10px 18px;
+      margin-top: 10px;
+      cursor: pointer;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .slide a:hover { background: #f1f1f1; }
+
+    @keyframes slide {
+      0%   { transform: translateX(0%); }
+      30%  { transform: translateX(0%); }
+      33%  { transform: translateX(-100%); }
+      63%  { transform: translateX(-100%); }
+      66%  { transform: translateX(-200%); }
+      96%  { transform: translateX(-200%); }
+      100% { transform: translateX(0%); }
+    }
+
     .container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -44,6 +102,8 @@
       margin-top: 10px;
       cursor: pointer;
       border-radius: 5px;
+      text-decoration: none;
+      display: inline-block;
     }
     .btn:hover { background: darkred; }
     footer {
@@ -62,6 +122,32 @@
   <p>Fast, Reliable & Affordable Medicines</p>
 </header>
 
+<!-- 🔹 Moving Banners with Images -->
+<div class="slider">
+  <div class="slides">
+
+    <div class="slide">
+      <img src="https://tpc.googlesyndication.com/simgad/1237610147326075390" alt="Diabetic Care">
+      🩺 Diabetics Care Products <br>
+      <a href="https://wa.me/917026961549?text=I%20am%20interested%20in%20Diabetics%20Care%20Products">Shop Now</a>
+    </div>
+
+    <div class="slide">
+      <img src="https://tpc.googlesyndication.com/simgad/9565173967949743543" alt="BP Sugar Tablets">
+      💊 Sugar & BP Tablets Available <br>
+      <a href="https://wa.me/917026961549?text=I%20want%20to%20order%20Sugar%20or%20BP%20Tablets">Order Now</a>
+    </div>
+
+    <div class="slide">
+      <img src="https://cdn.jivox.com/files/76754/Tags/728x90_f5_Tag_Image.png" alt="Injectables">
+      💉 30% OFF on Hospital Injectables <br>
+      <a href="https://wa.me/917026961549?text=I%20want%2030%%20off%20Hospital%20Injectables">Grab Offer</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- 🔹 Products -->
 <div class="container">
   <div class="card">
     <img src="https://5.imimg.com/data5/SELLER/Default/2023/11/364179362/NM/GV/BM/203498787/dolo-650-paracetamol-tablets-ip.jpg" alt="Dolo 650">
