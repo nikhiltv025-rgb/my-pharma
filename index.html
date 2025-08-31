@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Local Pharmacy Store</title>
-  <style> 
+  <title>Shri Venkateswara Medical Store</title>
+  <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -15,9 +15,24 @@
       background: rgb(61, 16, 61);
       color: white;
       padding: 15px;
-      text-align:right;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
     h1 { margin: 0; }
+    header p { margin: 0; font-size: 14px; }
+
+    /* 🔹 Cart Button */
+    .cart {
+      font-size: 20px;
+      text-decoration: none;
+      color: white;
+      background: red;
+      padding: 8px 15px;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+    .cart:hover { background: darkred; }
 
     /* 🔹 Banner Slider */
     .slider {
@@ -76,6 +91,7 @@
       100% { transform: translateX(0%); }
     }
 
+    /* 🔹 Product Cards */
     .container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -106,6 +122,21 @@
       display: inline-block;
     }
     .btn:hover { background: darkred; }
+
+    /* 🔹 Billing Section */
+    #billing {
+      background: #fff;
+      padding: 20px;
+      margin: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    #billing h2 {
+      margin-top: 0;
+    }
+    #bill-items {
+      margin: 10px 0;
+    }
     footer {
       background: #222;
       color: white;
@@ -118,32 +149,31 @@
 <body>
 
 <header>
-  <h1>💊 Local Pharmacy Store</h1>
-  <p>Fast, Reliable & Affordable Medicines</p>
+  <div>
+    <h1>🚑 Shri Venkateshwara Medical Store Bidar</h1>
+    <p>📍 Add : Chidri Ring Road Bidar      (585401) </p>
+  </div>
+  <a href="#billing" class="cart">🛒 Cart</a>
 </header>
 
 <!-- 🔹 Moving Banners with Images -->
 <div class="slider">
   <div class="slides">
-
     <div class="slide">
-      <img src="https://tpc.googlesyndication.com/simgad/1237610147326075390" alt="Diabetic Care">
+      <img src="https://www.shutterstock.com/image-photo/diabetes-banner-blood-glucose-meter-600nw-2167343905.jpg" alt="Diabetic Care">
       🩺 Diabetics Care Products <br>
-      <a href="https://wa.me/917026961549?text=I%20am%20interested%20in%20Diabetics%20Care%20Products">Shop Now</a>
+      <a href="#">Shop Now</a>
     </div>
-
     <div class="slide">
-      <img src="https://tpc.googlesyndication.com/simgad/9565173967949743543" alt="BP Sugar Tablets">
+      <img src="https://lh3.googleusercontent.com/p/AF1QipOtSYxbWbE9A_rpmjjKMYRCChAjNRHBToNtURIm=s1360-w1360-h1020-rw" alt="BP Sugar Tablets">
       💊 Sugar & BP Tablets Available <br>
-      <a href="https://wa.me/917026961549?text=I%20want%20to%20order%20Sugar%20or%20BP%20Tablets">Order Now</a>
+      <a href="#">Order Now</a>
     </div>
-
     <div class="slide">
-      <img src="https://cdn.jivox.com/files/76754/Tags/728x90_f5_Tag_Image.png" alt="Injectables">
+      <img src="https://lh3.googleusercontent.com/p/AF1QipPf3YZJsZ_DUBx0BlddIACGh_vO0ltWZrbscU3f=s1360-w1360-h1020-rw" alt="Injectables">
       💉 30% OFF on Hospital Injectables <br>
-      <a href="https://wa.me/917026961549?text=I%20want%2030%%20off%20Hospital%20Injectables">Grab Offer</a>
+      <a href="#">Grab Offer</a>
     </div>
-
   </div>
 </div>
 
@@ -153,34 +183,72 @@
     <img src="https://5.imimg.com/data5/SELLER/Default/2023/11/364179362/NM/GV/BM/203498787/dolo-650-paracetamol-tablets-ip.jpg" alt="Dolo 650">
     <h3>Dolo 650</h3>
     <p>Price: ₹30</p>
-    <a class="btn" href="https://wa.me/917026961549?text=I%20want%20to%20order%20Dolo%20650">Order on WhatsApp</a>
+    <button class="btn" onclick="addToCart('Dolo 650', 30)">Add to Cart</button>
   </div>
 
   <div class="card">
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNEAQA8ws9_de41fCd3iTOa82dOMIDMxO1Bg&s" alt="Paracetamol">
     <h3>Paracetamol</h3>
     <p>Price: ₹25</p>
-    <a class="btn" href="https://wa.me/917026961549?text=I%20want%20to%20order%20Paracetamol">Order on WhatsApp</a>
+    <button class="btn" onclick="addToCart('Paracetamol', 25)">Add to Cart</button>
   </div>
 
   <div class="card">
     <img src="https://storage.googleapis.com/dawaadost.appspot.com/main_images/main_images_img_161678.png" alt="Amoxicillin">
     <h3>Amoxicillin</h3>
     <p>Price: ₹50</p>
-    <a class="btn" href="https://wa.me/917026961549?text=I%20want%20to%20order%20Amoxicillin">Order on WhatsApp</a>
+    <button class="btn" onclick="addToCart('Amoxicillin', 50)">Add to Cart</button>
   </div>
 
   <div class="card">
     <img src="https://www.multani.org/cdn/shop/files/KUKACOUGHSYRUP-1.jpg?v=1746768303" alt="Cough Syrup">
     <h3>Cough Syrup</h3>
     <p>Price: ₹80</p>
-    <a class="btn" href="https://wa.me/917026961549?text=I%20want%20to%20order%20Cough%20Syrup">Order on WhatsApp</a>
+    <button class="btn" onclick="addToCart('Cough Syrup', 80)">Add to Cart</button>
   </div>
 </div>
 
+<!-- 🔹 Billing Section -->
+<div id="billing">
+  <h2>🧾 Billing System</h2>
+  <div id="bill-items">No items added yet.</div>
+  <h3>Total: ₹<span id="total">0</span></h3>
+  <a id="checkout" href="#" class="btn">Checkout on WhatsApp</a>
+</div>
+
 <footer>
-  <p>📍 Bidar, Karnataka | 📞 +91-7026961549 | © 2025 Local Pharmacy</p>
+  <p>📍 Bidar, Karnataka | 📞 +91-9742956631 | © 2025 Local Pharmacy</p>
 </footer>
+
+<script>
+  let cart = [];
+  let total = 0;
+
+  function addToCart(item, price) {
+    cart.push({ item, price });
+    total += price;
+    updateBill();
+  }
+
+  function updateBill() {
+    let billHTML = "<ul>";
+    cart.forEach((c) => {
+      billHTML += `<li>${c.item} - ₹${c.price}</li>`;
+    });
+    billHTML += "</ul>";
+    document.getElementById("bill-items").innerHTML = billHTML;
+    document.getElementById("total").innerText = total;
+
+    // WhatsApp checkout link
+    let msg = "Hello, I want to order:\n";
+    cart.forEach((c) => {
+      msg += `- ${c.item} (₹${c.price})\n`;
+    });
+    msg += `Total: ₹${total}`;
+    document.getElementById("checkout").href =
+      "https://wa.me/919742956631?text=" + encodeURIComponent(msg);
+  }
+</script>
 
 </body>
 </html>
