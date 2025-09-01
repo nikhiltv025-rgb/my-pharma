@@ -11,6 +11,8 @@
       padding: 0;
       background: #0e6bc8;
     }
+
+    /* 🔹 Header */
     header {
       background: rgb(61, 16, 61);
       color: white;
@@ -19,8 +21,35 @@
       justify-content: space-between;
       align-items: center;
     }
-    h1 { margin: 0; }
-    header p { margin: 0; font-size: 14px; }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .menu-icon {
+      font-size: 28px;
+      cursor: pointer;
+      padding: 5px 10px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.1);
+      transition: 0.3s;
+    }
+    .menu-icon:hover {
+      background: rgba(255,255,255,0.3);
+    }
+    h1 { margin: 0; font-size: 20px; }
+    header p { margin: 0; font-size: 13px; color: #ddd; }
+
+    /* 🔹 Medical Logo */
+    .medical-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid white;
+      object-fit: cover;
+      background: white;
+      padding: 3px;
+    }
 
     /* 🔹 Cart Button */
     .cart {
@@ -33,6 +62,38 @@
       transition: 0.3s;
     }
     .cart:hover { background: darkred; }
+
+    /* 🔹 Side Navigation */
+    .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: rgb(61, 16, 61);
+      overflow-x: hidden;
+      transition: 0.4s;
+      padding-top: 60px;
+      z-index: 1000;
+    }
+    .sidenav a {
+      padding: 12px 20px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #f1f1f1;
+      display: block;
+      transition: 0.3s;
+    }
+    .sidenav a:hover {
+      background: rgba(255,255,255,0.2);
+    }
+    .sidenav .closebtn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 30px;
+      cursor: pointer;
+    }
 
     /* 🔹 Banner Slider */
     .slider {
@@ -131,12 +192,9 @@
       border-radius: 10px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     }
-    #billing h2 {
-      margin-top: 0;
-    }
-    #bill-items {
-      margin: 10px 0;
-    }
+    #billing h2 { margin-top: 0; }
+    #bill-items { margin: 10px 0; }
+
     footer {
       background: #222;
       color: white;
@@ -148,10 +206,29 @@
 </head>
 <body>
 
+<!-- 🔹 Side Navigation -->
+<div id="mySidenav" class="sidenav">
+  <span class="closebtn" onclick="closeNav()">×</span>
+  <a href="#">🏠 Home</a>
+  <a href="#">💊 Products</a>
+  <a href="#billing">🧾 Billing</a>
+  <a href="#">📞 Contact</a>
+</div>
+
+<!-- 🔹 Header -->
 <header>
-  <div>
-    <h1>🚑 Shri Venkateshwara Medical Store Bidar</h1>
-    <p>📍 Add : Chidri Ring Road Bidar      (585401) </p>
+  <div class="nav-left">
+    <span class="menu-icon" onclick="openNav()">≡</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+      <!-- Pharmacy Medical Symbol -->
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDlRKh-DMES6GxZylw1L7dpXfEQ6wd2JS30g&s" 
+           alt="Pharmacy Symbol" 
+           class="medical-logo">
+      <div>
+        <h1>🚑 Shri Venkateshwara Medical Store Bidar</h1>
+        <p>📍 Add : Chidri Ring Road Bidar (585401)</p>
+      </div>
+    </div>
   </div>
   <a href="#billing" class="cart">🛒 Cart</a>
 </header>
@@ -247,6 +324,13 @@
     msg += `Total: ₹${total}`;
     document.getElementById("checkout").href =
       "https://wa.me/919742956631?text=" + encodeURIComponent(msg);
+  }
+
+  function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
   }
 </script>
 
