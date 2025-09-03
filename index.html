@@ -1,338 +1,1009 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shri Venkateswara Medical Store</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #0e6bc8;
-    }
-
-    /* 🔹 Header */
-    header {
-      background: rgb(61, 16, 61);
-      color: white;
-      padding: 15px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-    .menu-icon {
-      font-size: 28px;
-      cursor: pointer;
-      padding: 5px 10px;
-      border-radius: 6px;
-      background: rgba(255,255,255,0.1);
-      transition: 0.3s;
-    }
-    .menu-icon:hover {
-      background: rgba(255,255,255,0.3);
-    }
-    h1 { margin: 0; font-size: 20px; }
-    header p { margin: 0; font-size: 13px; color: #ddd; }
-
-    /* 🔹 Medical Logo */
-    .medical-logo {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      border: 2px solid white;
-      object-fit: cover;
-      background: white;
-      padding: 3px;
-    }
-
-    /* 🔹 Cart Button */
-    .cart {
-      font-size: 20px;
-      text-decoration: none;
-      color: white;
-      background: red;
-      padding: 8px 15px;
-      border-radius: 8px;
-      transition: 0.3s;
-    }
-    .cart:hover { background: darkred; }
-
-    /* 🔹 Side Navigation */
-    .sidenav {
-      height: 100%;
-      width: 0;
-      position: fixed;
-      top: 0;
-      left: 0;
-      background-color: rgb(61, 16, 61);
-      overflow-x: hidden;
-      transition: 0.4s;
-      padding-top: 60px;
-      z-index: 1000;
-    }
-    .sidenav a {
-      padding: 12px 20px;
-      text-decoration: none;
-      font-size: 18px;
-      color: #f1f1f1;
-      display: block;
-      transition: 0.3s;
-    }
-    .sidenav a:hover {
-      background: rgba(255,255,255,0.2);
-    }
-    .sidenav .closebtn {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      font-size: 30px;
-      cursor: pointer;
-    }
-
-    /* 🔹 Banner Slider */
-    .slider {
-      position: relative;
-      overflow: hidden;
-      height: 250px;
-    }
-    .slides {
-      display: flex;
-      width: 100%;
-      animation: slide 12s infinite;
-    }
-    .slide {
-      flex: 1 0 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      color: white;
-      font-size: 22px;
-      font-weight: bold;
-      text-align: center;
-      padding: 20px;
-      position: relative;
-    }
-    .slide img {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      opacity: 0.6;
-    }
-    .slide a {
-      background: white;
-      color: #d6336c;
-      border: none;
-      padding: 10px 18px;
-      margin-top: 10px;
-      cursor: pointer;
-      border-radius: 6px;
-      font-weight: bold;
-      text-decoration: none;
-    }
-    .slide a:hover { background: #f1f1f1; }
-
-    @keyframes slide {
-      0%   { transform: translateX(0%); }
-      30%  { transform: translateX(0%); }
-      33%  { transform: translateX(-100%); }
-      63%  { transform: translateX(-100%); }
-      66%  { transform: translateX(-200%); }
-      96%  { transform: translateX(-200%); }
-      100% { transform: translateX(0%); }
-    }
-
-    /* 🔹 Product Cards */
-    .container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-    .card {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      padding: 15px;
-      text-align: center;
-    }
-    .card img {
-      width: 120px;
-      height: 120px;
-      object-fit: contain;
-    }
-    .btn {
-      background: red;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      margin-top: 10px;
-      cursor: pointer;
-      border-radius: 5px;
-      text-decoration: none;
-      display: inline-block;
-    }
-    .btn:hover { background: darkred; }
-
-    /* 🔹 Billing Section */
-    #billing {
-      background: #fff;
-      padding: 20px;
-      margin: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    }
-    #billing h2 { margin-top: 0; }
-    #bill-items { margin: 10px 0; }
-
-    footer {
-      background: #222;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      margin-top: 20px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radiannt Clinic - Skin, Hair & Venereology</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fafafa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #6A11CB 0%, #2575FC 100%);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b6b, #6A11CB);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .logo-circle i {
+            font-size: 28px;
+            color: white;
+        }
+        
+        .logo-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+        
+        .logo-text p {
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            opacity: 0.9;
+        }
+        
+        .contact-info {
+            text-align: right;
+        }
+        
+        .contact-info p {
+            margin: 5px 0;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            position: relative;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #444;
+            font-weight: 600;
+            padding: 20px 18px;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #6A11CB;
+        }
+        
+        .nav-links a:hover::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 18px;
+            right: 18px;
+            height: 3px;
+            background: linear-gradient(to right, #ff6b6b, #6A11CB);
+        }
+        
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .search-box {
+            position: relative;
+        }
+        
+        .search-box input {
+            padding: 10px 15px;
+            padding-right: 40px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            font-size: 14px;
+            width: 200px;
+            transition: all 0.3s;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: #6A11CB;
+            width: 230px;
+        }
+        
+        .search-box i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #777;
+        }
+        
+        .cart-icon {
+            font-size: 22px;
+            color: #6A11CB;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #ff6b6b;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(106, 17, 203, 0.85), rgba(37, 117, 252, 0.85)), url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, #ff6b6b, #6A11CB);
+            color: white;
+            padding: 14px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(106, 17, 203, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(106, 17, 203, 0.4);
+        }
+        
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(45deg, #6A11CB, #2575FC);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .feature-icon i {
+            font-size: 28px;
+            color: white;
+        }
+        
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .feature-card p {
+            color: #666;
+            font-size: 15px;
+        }
+        
+        /* Products Section */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #ff6b6b, #6A11CB);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 600px;
+            margin: 25px auto 0;
+        }
+        
+        .categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .category-btn {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .category-btn.active, .category-btn:hover {
+            background: linear-gradient(to right, #ff6b6b, #6A11CB);
+            color: white;
+            border-color: transparent;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-img {
+            height: 200px;
+            background: #f7f7f7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .product-img img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .product-price {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        
+        .price {
+            font-weight: 700;
+            color: #6A11CB;
+            font-size: 18px;
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 14px;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            overflow: hidden;
+        }
+        
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            background: #f7f7f7;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .quantity-input {
+            width: 40px;
+            height: 30px;
+            text-align: center;
+            border: none;
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+        }
+        
+        .add-to-cart-btn {
+            flex-grow: 1;
+            background: linear-gradient(to right, #6A11CB, #2575FC);
+            color: white;
+            border: none;
+            padding: 0 15px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .add-to-cart-btn:hover {
+            background: linear-gradient(to right, #2575FC, #6A11CB);
+        }
+        
+        /* Discount Banner */
+        .discount-banner {
+            background: linear-gradient(135deg, #ff6b6b 0%, #6A11CB 100%);
+            color: white;
+            text-align: center;
+            padding: 40px;
+            border-radius: 12px;
+            margin: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .discount-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 20%);
+            animation: pulse 4s infinite linear;
+        }
+        
+        @keyframes pulse {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .discount-banner h3 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            animation: blink 2s infinite;
+        }
+        
+        .discount-banner p {
+            font-size: 18px;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.8; transform: scale(1.02); }
+            100% { opacity: 1; }
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #1a2530 100%);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(to right, #ff6b6b, #6A11CB);
+        }
+        
+        .footer-section p {
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+        
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background: linear-gradient(to right, #ff6b6b, #6A11CB);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+        }
+        
+        /* WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .logo {
+                justify-content: center;
+            }
+            
+            .contact-info {
+                text-align: center;
+            }
+            
+            .contact-info p {
+                justify-content: center;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                padding: 15px 0;
+            }
+            
+            .nav-links {
+                margin-bottom: 15px;
+            }
+            
+            .nav-links a {
+                padding: 10px 12px;
+            }
+            
+            .hero h2 {
+                font-size: 36px;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .search-box input {
+                width: 180px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h2 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .discount-banner h3 {
+                font-size: 24px;
+            }
+            
+            .discount-banner p {
+                font-size: 16px;
+            }
+            
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-circle">
+                    <i class="fas fa-clinic-medical"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Radiannt Clinic</h1>
+                    <p>SKIN HAIR VENEREOLOGY</p>
+                </div>
+            </div>
+            <div class="contact-info">
+                <p><i class="fas fa-map-marker-alt"></i> Near Khargi Circle, Jayanagar Cross, Sedam Road, Gulbarga 585105</p>
+                <p><i class="fas fa-phone"></i> Phone: 7676 943 143</p>
+            </div>
+        </div>
+    </header>
 
-<!-- 🔹 Side Navigation -->
-<div id="mySidenav" class="sidenav">
-  <span class="closebtn" onclick="closeNav()">×</span>
-  <a href="#">🏠 Home</a>
-  <a href="#">💊 Products</a>
-  <a href="#billing">🧾 Billing</a>
-  <a href="#">📞 Contact</a>
-</div>
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#treatments">Treatments</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="Search products...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="cart-icon" id="cartIcon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-<!-- 🔹 Header -->
-<header>
-  <div class="nav-left">
-    <span class="menu-icon" onclick="openNav()">≡</span>
-    <div style="display:flex; align-items:center; gap:10px;">
-      <!-- Pharmacy Medical Symbol -->
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDlRKh-DMES6GxZylw1L7dpXfEQ6wd2JS30g&s" 
-           alt="Pharmacy Symbol" 
-           class="medical-logo">
-      <div>
-        <h1>🚑 Shri Venkateshwara Medical Store Bidar</h1>
-        <p>📍 Add : Chidri Ring Road Bidar (585401)</p>
-      </div>
-    </div>
-  </div>
-  <a href="#billing" class="cart">🛒 Cart</a>
-</header>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h2>Expert Care for Your Skin & Hair</h2>
+            <p>Specialized dermatology treatments and premium skincare products for radiant health</p>
+            <a href="#products" class="btn">Explore Products</a>
+        </div>
+    </section>
 
-<!-- 🔹 Moving Banners with Images -->
-<div class="slider">
-  <div class="slides">
-    <div class="slide">
-      <img src="https://www.shutterstock.com/image-photo/diabetes-banner-blood-glucose-meter-600nw-2167343905.jpg" alt="Diabetic Care">
-      🩺 Diabetics Care Products <br>
-      <a href="#">Shop Now</a>
-    </div>
-    <div class="slide">
-      <img src="https://lh3.googleusercontent.com/p/AF1QipOtSYxbWbE9A_rpmjjKMYRCChAjNRHBToNtURIm=s1360-w1360-h1020-rw" alt="BP Sugar Tablets">
-      💊 Sugar & BP Tablets Available <br>
-      <a href="#">Order Now</a>
-    </div>
-    <div class="slide">
-      <img src="https://lh3.googleusercontent.com/p/AF1QipPf3YZJsZ_DUBx0BlddIACGh_vO0ltWZrbscU3f=s1360-w1360-h1020-rw" alt="Injectables">
-      💉 30% OFF on Hospital Injectables <br>
-      <a href="#">Grab Offer</a>
-    </div>
-  </div>
-</div>
+    <!-- Features Section -->
+    <section class="container">
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-truck"></i>
+                </div>
+                <h3>Free Delivery</h3>
+                <p>Free home delivery on orders above ₹500</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-stethoscope"></i>
+                </div>
+                <h3>Expert Consultation</h3>
+                <p>Get advice from our dermatology specialists</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-pills"></i>
+                </div>
+                <h3>Genuine Products</h3>
+                <p>100% authentic medicines and skincare products</p>
+            </div>
+        </div>
+    </section>
 
-<!-- 🔹 Products -->
-<div class="container">
-  <div class="card">
-    <img src="https://5.imimg.com/data5/SELLER/Default/2023/11/364179362/NM/GV/BM/203498787/dolo-650-paracetamol-tablets-ip.jpg" alt="Dolo 650">
-    <h3>Dolo 650</h3>
-    <p>Price: ₹30</p>
-    <button class="btn" onclick="addToCart('Dolo 650', 30)">Add to Cart</button>
-  </div>
+    <!-- Products Section -->
+    <section id="products" class="container">
+        <div class="section-title">
+            <h2>Our Products</h2>
+            <p>Specialized dermatology products with proven results</p>
+        </div>
 
-  <div class="card">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNEAQA8ws9_de41fCd3iTOa82dOMIDMxO1Bg&s" alt="Paracetamol">
-    <h3>Paracetamol</h3>
-    <p>Price: ₹25</p>
-    <button class="btn" onclick="addToCart('Paracetamol', 25)">Add to Cart</button>
-  </div>
+        <div class="categories">
+            <button class="category-btn active">All Products</button>
+            <button class="category-btn">Creams</button>
+            <button class="category-btn">Medicines</button>
+            <button class="category-btn">Soaps</button>
+            <button class="category-btn">Sunscreens</button>
+        </div>
 
-  <div class="card">
-    <img src="https://storage.googleapis.com/dawaadost.appspot.com/main_images/main_images_img_161678.png" alt="Amoxicillin">
-    <h3>Amoxicillin</h3>
-    <p>Price: ₹50</p>
-    <button class="btn" onclick="addToCart('Amoxicillin', 50)">Add to Cart</button>
-  </div>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://m.media-amazon.com/images/I/61R+lgpkVOL.jpg">
+                    <span class="product-badge">5% OFF</span>
+                </div>
+                <div class="product-info">
+                    <h3>Luly Cream</h3>
+                    <div class="product-price">
+                        <span class="price">₹245</span>
+                        <span class="original-price">₹258</span>
+                    </div>
+                    <div class="product-actions">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> Add</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="data:image/jpeg;base64,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">
+                    <span class="product-badge">5% OFF</span>
+                </div>
+                <div class="product-info">
+                    <h3>Lulifin Max Cream</h3>
+                    <div class="product-price">
+                        <span class="price">₹285</span>
+                        <span class="original-price">₹300</span>
+                    </div>
+                    <div class="product-actions">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> Add</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://shopatdna.com/cdn/shop/products/Uvdoux-silicone-sunscreen-gel-50_1024x1024.jpg?v=1665121903" alt="UV Doux Sunscreen">
+                    <span class="product-badge">5% OFF</span>
+                </div>
+                <div class="product-info">
+                    <h3>UV Doux Sunscreen</h3>
+                    <div class="product-price">
+                        <span class="price">₹385</span>
+                        <span class="original-price">₹405</span>
+                    </div>
+                    <div class="product-actions">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> Add</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbcfADK7WoioMpU9lkxGbtY0qVxrLsemQBzg&s" alt="Keto Soap">
+                    <span class="product-badge">5% OFF</span>
+                </div>
+                <div class="product-info">
+                    <h3>Keto Soap</h3>
+                    <div class="product-price">
+                        <span class="price">₹95</span>
+                        <span class="original-price">₹100</span>
+                    </div>
+                    <div class="product-actions">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <div class="card">
-    <img src="https://www.multani.org/cdn/shop/files/KUKACOUGHSYRUP-1.jpg?v=1746768303" alt="Cough Syrup">
-    <h3>Cough Syrup</h3>
-    <p>Price: ₹80</p>
-    <button class="btn" onclick="addToCart('Cough Syrup', 80)">Add to Cart</button>
-  </div>
-</div>
+    <!-- Discount Banner -->
+    <section class="container">
+        <div class="discount-banner">
+            <h3>Special Offer: 5% Discount on All Products!</h3>
+            <p>Use code: HEALTH5 at checkout</p>
+            <p>Free consultation with every order above ₹1000</p>
+        </div>
+    </section>
 
-<!-- 🔹 Billing Section -->
-<div id="billing">
-  <h2>🧾 Billing System</h2>
-  <div id="bill-items">No items added yet.</div>
-  <h3>Total: ₹<span id="total">0</span></h3>
-  <a id="checkout" href="#" class="btn">Checkout on WhatsApp</a>
-</div>
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/917676943143?text=Hello%20Radiannt%20Clinic,%20I%20would%20like%20to%20know%20more%20about%20your%20services" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
-<footer>
-  <p>📍 Bidar, Karnataka | 📞 +91-9742956631 | © 2025 Shri Venkateshwara Medical</p>
-</footer>
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>Radiannt Clinic is a specialized dermatology center focused on skin, hair, and venereology treatments. We provide expert care and premium products.</p>
+                </div>
+                <div class="footer-section footer-contact">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Near Khargi Circle, Jayanagar Cross, Sedam Road, Gulbarga 585105</p>
+                    <p><i class="fas fa-phone"></i> 7676 943 143</p>
+                    <p><i class="fas fa-envelope"></i> info@radianntclinic.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <p>Stay connected with us on social media</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://wa.me/917676943143" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Radiannt Clinic. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-<script>
-  let cart = [];
-  let total = 0;
-
-  function addToCart(item, price) {
-    cart.push({ item, price });
-    total += price;
-    updateBill();
-  }
-
-  function updateBill() {
-    let billHTML = "<ul>";
-    cart.forEach((c) => {
-      billHTML += `<li>${c.item} - ₹${c.price}</li>`;
-    });
-    billHTML += "</ul>";
-    document.getElementById("bill-items").innerHTML = billHTML;
-    document.getElementById("total").innerText = total;
-
-    // WhatsApp checkout link
-    let msg = "Hello, I want to order:\n";
-    cart.forEach((c) => {
-      msg += `- ${c.item} (₹${c.price})\n`;
-    });
-    msg += `Total: ₹${total}`;
-    document.getElementById("checkout").href =
-      "https://wa.me/919742956631?text=" + encodeURIComponent(msg);
-  }
-
-  function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-  }
-  function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-  }
-</script>
-
+    <script>
+        // Simple JavaScript for interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Cart functionality
+            const cartIcon = document.getElementById('cartIcon');
+            const cartCount = document.getElementById('cartCount');
+            let count = 0;
+            
+            // Add to cart buttons
+            const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const product = this.closest('.product-card');
+                    const productName = product.querySelector('h3').textContent;
+                    count++;
+                    cartCount.textContent = count;
+                    
+                    alert(`${productName} added to cart!`);
+                });
+            });
+            
+            // Quantity controls
+            const plusButtons = document.querySelectorAll('.quantity-btn.plus');
+            plusButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const input = this.parentElement.querySelector('.quantity-input');
+                    input.value = parseInt(input.value) + 1;
+                });
+            });
+            
+            const minusButtons = document.querySelectorAll('.quantity-btn.minus');
+            minusButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const input = this.parentElement.querySelector('.quantity-input');
+                    if (parseInt(input.value) > 1) {
+                        input.value = parseInt(input.value) - 1;
+                    }
+                });
+            });
+            
+            // Category buttons
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Cart icon click
+            cartIcon.addEventListener('click', function() {
+                alert('Cart functionality would be implemented here. Total items: ' + count);
+            });
+        });
+    </script>
 </body>
 </html>
